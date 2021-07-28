@@ -125,7 +125,7 @@ client.on('message', message => {
   }
 });
 
-client.login('ODcwMDIxMTkyMzA2Nzk4Njky.YQGsYA.cuEOQy-Bwb0er5iYl746EpGkI6o');
+client.login('Token_Here');
 app.get('/', function (req, res) {
   res.send('Bot is online');
 })
