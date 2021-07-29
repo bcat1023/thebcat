@@ -5,9 +5,13 @@ const client = new Discord.Client();
 const message = Discord.message;
 
 //custom data
-const debug = true;
+//The values above should not be changed, But the ones below can be changed
+const debug = false;
 const greetchannel = "general";
 const botname = 'thebcat';
+const wakekey = '!';
+const token = "token_here";
+//The values above can be changed to fix your needs
 /* for future use const botchannel = "thebcat";*/
 
 client.on('ready', () => {
@@ -29,15 +33,16 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', message => {
-  if (message.content === "!version") {
+  if (message.content === `${wakekey}version`) {
     message.channel.send("Art by @Ray, Programing by @dozingvoid");
-    message.channel.send("Version 7.0.0")
+    message.channel.send("Version 8.0.0")
+    message.channel.send(`${botname}, 2021, Made by dozingvoid`)
   }
 })
 
 client.on('message', message => {
-  if (message.content == '!help') {
-    message.channel.send("If messages stop going in wait a couple minutes because it might just me loading, Our servers aren't the fastest ")
+  if (message.content == `${wakekey}help`) {
+    message.channel.send("If messages stop going in wait a couple minutes because it might just be loading, Our servers aren't the fastest ")
     message.channel.send("Hey there, just to remind you. Slow mode is required for this bot to work fluidly or bugs may happen. These bugs could break your entire server and get the bot stuck in a infinite loop that you cant end. Literally, remove the bot and adding it back wont work");
     message.channel.send("Hello, Here is a list of commands you can use");
     message.channel.send("Some of these commands will only work if you have administrative access");
@@ -52,30 +57,30 @@ client.on('message', message => {
 });
 
 client.on('message', msg => {
-  if (msg.content === '!ping') {
+  if (msg.content === `${wakekey}ping`) {
     msg.reply('pong');
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '!test') {
+  if (msg.content === `${wakekey}test`) {
     msg.reply('Hello, Im Here');
   }
 });
 
 client.on('message', message => {
-  if (message.content.startsWith('!kick')) {
+  if (message.content.startsWith(`${wakekey}kick`)) {
     message.channel.send('Attempting To Kick User, Please Wait')
     if (!message.guild) {
       return message.reply(`@here your don't have have the rights to kick members`)
     };
-    if (message.content.startsWith('!kick')) {
+    if (message.content.startsWith(`${wakekey}kick`)) {
       const user = message.mentions.users.first();
       if (user) {
         const member = message.guild.member(user);
         if (member) {
           member
-            .kick('Optional reason that will display in the audit logs')
+            .kick('')
             .then(() => {
               message.reply(`Successfully kicked ${user.tag}`);
             })
@@ -98,7 +103,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (!message.guild) return message.reply(`@here your don't have have the rights to kick members`);
-  if (message.content.startsWith('!ban')) {
+  if (message.content.startsWith(`${wakekey}ban`)) {
     const user = message.mentions.users.first();
     if (user) {
       const member = message.guild.member(user);
@@ -125,7 +130,7 @@ client.on('message', message => {
   }
 });
 
-client.login('Token_Here');
+client.login(`${tokenid}`);
 app.get('/', function (req, res) {
   res.send('Bot is online');
 })
