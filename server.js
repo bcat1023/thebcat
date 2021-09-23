@@ -1,21 +1,35 @@
+//webserver
 const express = require('express')
 const app = express()
+ 
+app.get('/', function (req, res) {
+  res.send('Additional data needed for api to respond to request')
+})
+
+app.get('/discord', function (req, res) {
+  res.send('Bot is online according to bot services')
+})
+
+app.get('/ping', function (req, res) {
+  res.send('Server is online according to bot services')
+})
+ 
+app.listen(3000)
+console.log("Webserver is up on port 3000")
+
+//discordbot
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const message = Discord.message;
-
-//custom data
-//The values above should not be changed, But the ones below can be changed
 const debug = false;
 const greetchannel = "general";
 const botname = 'thebcat';
-const wakekey = '!';
-const token = "token_here";
-//The values above can be changed to fix your needs
+const wakekey = '?';
+const token = process.env.tokenvar;
 /* for future use const botchannel = "thebcat";*/
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  console.log(`Logged in discord bot as ${client.user.tag}!`);
   if (debug == true) {
     console.log("Debug mode is on");
   } else {
@@ -24,19 +38,16 @@ client.on('ready', () => {
 });
 
 client.on('guildMemberAdd', member => {
-  // Send the message to a designated channel on a server:
   const channel = member.guild.channels.cache.find(ch => ch.name === `${greetchannel}`);
-  // Do nothing if the channel wasn't found on this server
   if (!channel) return;
-  // Send the message, mentioning the member
   channel.send(`Hi ${member}, My name is ${botname}. My job is to help you out. If you want to feel free to go over to any channel and type ` + '`!help`' + ` If you ever need any help. Remember im here to help`);
 });
 
 client.on('message', message => {
   if (message.content === `${wakekey}version`) {
-    message.channel.send("Art by @Ray, Programing by @dozingvoid");
-    message.channel.send("Version 8.0.0")
-    message.channel.send(`${botname}, 2021, Made by dozingvoid`)
+    message.channel.send("Art by @Ray, Programing by @drowsy");
+    message.channel.send("Version 9.0.0")
+    message.channel.send(`${botname}, 2021, Made by drowsy`)
   }
 })
 
@@ -46,11 +57,11 @@ client.on('message', message => {
     message.channel.send("Hey there, just to remind you. Slow mode is required for this bot to work fluidly or bugs may happen. These bugs could break your entire server and get the bot stuck in a infinite loop that you cant end. Literally, remove the bot and adding it back wont work");
     message.channel.send("Hello, Here is a list of commands you can use");
     message.channel.send("Some of these commands will only work if you have administrative access");
-    message.channel.send("Use `!kick @user` To kick users");
-    message.channel.send("Use `!version` To view the bots version");
-    message.channel.send("Use `!ban @user` To ban users");
-    message.channel.send("Use `!ping` to see if the bot is online");
-    message.channel.send("Use `!test` to see if the bot is online");
+    message.channel.send(`Use \`${wakekey}kick @user\` To kick users`);
+    message.channel.send(`Use \`${wakekey}version\` To view the bots version`);
+    message.channel.send(`Use \`${wakekey}ban @user\` To ban users`);
+    message.channel.send(`Use \`${wakekey}ping\` to see if the bot is online`);
+    message.channel.send(`Use \`${wakekey}test\` to see if the bot is online`);
     message.channel.send("Thats all i can do right now but my developer is making even more features as you read!");
     return
   }
@@ -130,9 +141,4 @@ client.on('message', message => {
   }
 });
 
-client.login(`${tokenid}`);
-app.get('/', function (req, res) {
-  res.send('Bot is online');
-})
-
-app.listen(3000)
+client.login(`${token}`);

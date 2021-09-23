@@ -1,17 +1,14 @@
 {
-  "name": "thebcat",
-  "version": "8.0.0",
-  "description": "A high quality bot built for discord",
-  "main": "main.js",
+  "name": "dozingvoidserver",
+  "version": "1.0.0",
+  "description": "dozingvoids private node server",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cls&&@echo off&&echo Loading files&&npm install&&cls&&node main.js"
+    "start": "npm install&&node server.js"
   },
-  "author": "Brandon",
+  "author": "Bcat",
   "license": "ISC",
-  "engines": {
-    "node" : "0.12"
-  },
   "dependencies": {
     "discord.js": "12.5.3",
     "express": "4.17.1"
