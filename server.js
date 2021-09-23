@@ -57,11 +57,11 @@ client.on('message', message => {
     message.channel.send("Hey there, just to remind you. Slow mode is required for this bot to work fluidly or bugs may happen. These bugs could break your entire server and get the bot stuck in a infinite loop that you cant end. Literally, remove the bot and adding it back wont work");
     message.channel.send("Hello, Here is a list of commands you can use");
     message.channel.send("Some of these commands will only work if you have administrative access");
-    message.channel.send("Use `${wakekey}kick @user` To kick users");
-    message.channel.send("Use `${wakekey}version` To view the bots version");
-    message.channel.send("Use `${wakekey}ban @user` To ban users");
-    message.channel.send("Use `${wakekey}ping` to see if the bot is online");
-    message.channel.send("Use `${wakekey}test` to see if the bot is online");
+    message.channel.send(`Use \`${wakekey}kick @user\` To kick users`);
+    message.channel.send(`Use \`${wakekey}version\` To view the bots version`);
+    message.channel.send(`Use \`${wakekey}ban @user\` To ban users`);
+    message.channel.send(`Use \`${wakekey}ping\` to see if the bot is online`);
+    message.channel.send(`Use \`${wakekey}test\` to see if the bot is online`);
     message.channel.send("Thats all i can do right now but my developer is making even more features as you read!");
     return
   }
