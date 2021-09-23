@@ -45,9 +45,9 @@ client.on('guildMemberAdd', member => {
 
 client.on('message', message => {
   if (message.content === `${wakekey}version`) {
-    message.channel.send("Art by @Ray, Programing by @dozingvoid");
-    message.channel.send("Version 8.0.0")
-    message.channel.send(`${botname}, 2021, Made by dozingvoid`)
+    message.channel.send("Art by @Ray, Programing by @drowsy");
+    message.channel.send("Version 9.0.0")
+    message.channel.send(`${botname}, 2021, Made by drowsy`)
   }
 })
 
